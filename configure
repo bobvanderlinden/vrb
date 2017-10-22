@@ -341,8 +341,8 @@ if [[ -n "${warninline}" ]]; then
     pgm_warn=( "${pgm_warn[@]}" -Winline )
 fi
 
-lib_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -fgnu-linker -frerun-loop-opt -finline -finline-functions -fmove-all-movables )
-pgm_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -fgnu-linker -frerun-loop-opt -finline -finline-functions -fmove-all-movables )
+lib_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
+pgm_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
 
 lib_cp_opt=( -pipe )
 pgm_cp_opt=( -pipe )

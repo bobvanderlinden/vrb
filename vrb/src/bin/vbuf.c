@@ -426,7 +426,6 @@ main (
     int			opt_progress		;
     int			output_fd		;
     int			poll_time		;
-    int			poll_num		;
     int			poll_write		;
     int			poll_read		;
 
@@ -861,7 +860,7 @@ main (
 	    poll_time = display_time - get_time_ms();
 	    if ( poll_time < 0 ) poll_time = 0;
 	}
-	poll_num = poll( poll_list, 2, poll_time );
+	poll( poll_list, 2, poll_time );
 
 	//-----------------------
 	// Check for poll events.
