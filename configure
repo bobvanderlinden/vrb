@@ -341,8 +341,8 @@ if [[ -n "${warninline}" ]]; then
     pgm_warn=( "${pgm_warn[@]}" -Winline )
 fi
 
-lib_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
-pgm_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
+lib_feat=( -fomit-frame-pointer -funsigned-char -finline -finline-functions )
+pgm_feat=( -fomit-frame-pointer -funsigned-char -finline -finline-functions )
 
 lib_cp_opt=( -pipe )
 pgm_cp_opt=( -pipe )
@@ -1238,7 +1238,7 @@ function make_lib {
 	    echo ""
 
 	    echo -n "${tab}\$(lib_ld_cmd) \$(lib_ld_opt)" \
-		"-Wl,-S,-soname,lib${libname}.so.${version1} -o lib/lib${libname}.so.${version}"
+		"-o lib/lib${libname}.so.${version}"
 	    class_product_obj lib "${libname}" | N="${libname}" gawk '{printf " obj/solib/%s/%s",ENVIRON["N"],$1;}'
 	    class_product_dep lib "${libname}" | gawk '{printf " -l%s",$1;}'
 	    echo ""
@@ -1268,7 +1268,7 @@ function make_lib {
 	class_product_src lib "${libname}" | while read srcname; do
 	    vmsg 9 "Generating Makefile section: lib ${libname} ${srcname}"
 	    srcdir=$( dirname "${srcname}" )
-	    srcref="-I ${srcdir} -I ${source}/include -I- -I ./include ${srcname}"
+	    srcref="-I ${srcdir} -I ${source}/include -I ./include ${srcname}"
 	    objname=$( echo "${srcname}" | gawk -F/ '{print $NF;}' | gawk -F. 'BEGIN{OFS=".";}{$NF="o";print $0;}' )
 	    for lc in arlib solib; do
 		[[ "${lc}" = "arlib" ]] && libfeat=( -DARLIBRARY=1 )
