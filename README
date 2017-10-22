@@ -46,7 +46,7 @@ Installation:
 The installation instructions are in file "INSTALL".  But if you are in
 a hurry, you can just do:
 
-    ./configure --prefix=/usr/local
+    cmake .
     make clean
     make install
 

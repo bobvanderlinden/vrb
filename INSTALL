@@ -11,35 +11,14 @@ If you have not read file "README", you should.
 
 Installation:
 
-There is a script called "configure" which requires either bash or ksh
-to run.  It first runs via /bin/sh and determines whether /bin/bash or
-/bin/ksh is present, then writes out a copy of itself to use that shell
-interpreter, then runs that copy.  This script scans all the files and
-builds the Makefiles needed to compile VRB.  It also includes a special
-command used during compilation to extract function prototypes as well
-as macro definitions from .c sources to build .h headers.  This allows
-for a single point of definition which makes it easy to develop more
-functions and programs, and not have to keep other files in sync all
-the time.
+To build this project you need to make sure cmake is installed. After cmake
+is available you can use the following command to configure the project:
 
-The "configure" script will take a "--prefix=" option to specify the
-installation location for the library.  It also takes a few variations
-to control the installation specificall for different classes of files.
-The default installation target is a temporary directory in /tmp so it
-is necessary to actually specific "--prefix=" to do a permanent install
-in a usual place like /usr/local.  This information is used only to
-build the Makefiles to do the installation.  It is not copied into the
-code or headers.  This means that you can choose to manually copy all
-the files from the temporary installation, or just build a tarball from
-the temporary installation.
+    cmake .
 
-Simply execute it like:
+or when you want to manually specify where to install vrb, use:
 
-    ./configure
-
-or like:
-
-    ./configure --prefix=/usr/local
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
 
 Once it builds the various Makefiles, then you can do:
 
